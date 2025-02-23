@@ -1,5 +1,7 @@
 import Navigation from "./Navigation";
 import HeroSection from "./HeroSection";
+import LogisticsSection from "./LogisticsSection";
+import QualitySection from "./QualitySection";
 import AboutUs from "./AboutUs";
 import ProductShowcase from "./ProductShowcase";
 import PartnersMap from "./PartnersMap";
@@ -13,8 +15,10 @@ function Home() {
     <div className="w-full min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-950 via-[#001B3B] to-slate-950">
       <Navigation />
       <HeroSection />
+      <LogisticsSection />
       <AboutUs />
       <ProductShowcase />
+      <QualitySection />
       <PartnersMap />
 
       <section

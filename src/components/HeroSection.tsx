@@ -4,14 +4,26 @@ import { Button } from "./ui/button";
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen pt-20 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1605745341112-85968b19335b"
-          alt="Cargo Ship"
-          className="w-full h-full object-cover"
-        />
-        {/* Overlay */}
+      {/* Background Image with Ken Burns effect */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+          className="w-full h-full"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1605745341112-85968b19335b"
+            alt="Cargo Ship"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        {/* Overlay with animated gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/50" />
       </div>
 
@@ -22,7 +34,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="backdrop-blur-sm bg-slate-900/30 p-6 md:p-8 rounded-2xl border border-white/10"
+            className="backdrop-blur-sm bg-slate-900/30 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-colors duration-300"
           >
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-white via-blue-100 to-blue-300 text-transparent bg-clip-text"
@@ -72,7 +84,8 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.2 }}
-                className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl p-4 text-center"
+                whileHover={{ scale: 1.05 }}
+                className="backdrop-blur-sm bg-white/5 border border-white/10 hover:border-blue-500/30 rounded-xl p-4 text-center transition-colors duration-300"
               >
                 <div className="text-2xl md:text-3xl font-bold text-blue-300 mb-1">
                   {stat.value}
