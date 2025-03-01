@@ -3,48 +3,48 @@ import { Button } from "./ui/button";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen pt-20 overflow-hidden">
-      {/* Background Image with Ken Burns effect */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "linear",
-          }}
-          className="w-full h-full"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1605745341112-85968b19335b"
-            alt="Cargo Ship"
-            className="w-full h-full object-cover"
+    <div className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-b from-amber-50 to-white">
+      {/* Background pattern */}
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-20">
+        <div className="absolute inset-0 bg-[url('https://iili.io/32okrR1.md.jpg?q=80&w=2000')] bg-cover bg-center opacity-99" />
+        {/* Animated elements */}
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute bottom-0 left-0 right-0 h-[20vh] opacity-10"
+            style={{
+              background: `linear-gradient(180deg, rgba(101,163,13,0) 0%, rgba(101,163,13,${0.05 * i}) 100%)`,
+              transform: `translateY(${(i - 1) * 20}%)`,
+            }}
+            animate={{
+              translateX: ["-5%", "5%", "-5%"],
+              translateY: [
+                `${(i - 1) * 20}%`,
+                `${(i - 1) * 20 + 2}%`,
+                `${(i - 1) * 20}%`,
+              ],
+            }}
+            transition={{
+              duration: 7 - i,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           />
-        </motion.div>
-        {/* Overlay with animated gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/50" />
+        ))}
       </div>
 
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
-        <div className="max-w-2xl">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="backdrop-blur-sm bg-slate-900/30 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-colors duration-300"
           >
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-white via-blue-100 to-blue-300 text-transparent bg-clip-text"
-              animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
-              transition={{ duration: 10, repeat: Infinity }}
-            >
-              Global Agricultural
-              <span className="block mt-2">Excellence</span>
-            </motion.h1>
-            <p className="text-lg md:text-xl text-blue-100/90 mb-8 leading-relaxed">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-green-800">
+              Global Agricultural Excellence
+            </h1>
+            <p className="text-lg md:text-xl text-green-700/80 mb-8 leading-relaxed">
               Premium exporters of agricultural treasures: chickpeas,
               groundnuts, cotton, rice, and exquisite spices. Bridging Indian
               agriculture with global markets through excellence and
@@ -53,52 +53,36 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-4">
               <Button
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-xl shadow-lg shadow-blue-500/20 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-lg rounded-lg"
               >
                 Explore Products
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/40 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-xl backdrop-blur transition-all duration-300 hover:scale-105"
+                className="border-green-600 hover:border-green-700 text-green-700 hover:text-green-800 px-6 py-3 text-lg rounded-lg"
               >
                 Learn More
               </Button>
             </div>
           </motion.div>
 
-          {/* Stats */}
+          {/* Hero Image */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl"
           >
-            {[
-              { value: "10+", label: "Years Experience" },
-              { value: "25+", label: "Countries Served" },
-              { value: "1000+", label: "Tons Exported" },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 + index * 0.2 }}
-                whileHover={{ scale: 1.05 }}
-                className="backdrop-blur-sm bg-white/5 border border-white/10 hover:border-blue-500/30 rounded-xl p-4 text-center transition-colors duration-300"
-              >
-                <div className="text-2xl md:text-3xl font-bold text-blue-300 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-blue-100/80">{stat.label}</div>
-              </motion.div>
-            ))}
+            <img
+              src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1200"
+              alt="Agricultural Fields"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 to-transparent"></div>
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent z-10" />
     </div>
   );
 };

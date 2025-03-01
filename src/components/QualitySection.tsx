@@ -24,7 +24,7 @@ const QualitySection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#001B3B] to-slate-950">
+    <section className="py-20 bg-gradient-to-b from-amber-50 to-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,10 +32,10 @@ const QualitySection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-blue-100 to-blue-300 text-transparent bg-clip-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-800">
             Quality Assurance
           </h2>
-          <p className="text-lg md:text-xl text-blue-100/80 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-green-700/80 max-w-3xl mx-auto">
             Meeting international standards with rigorous quality control
           </p>
         </motion.div>
@@ -48,7 +48,7 @@ const QualitySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
             >
-              <Card className="group overflow-hidden bg-slate-900/50 backdrop-blur border-white/5 hover:border-blue-500/50 transition-all duration-500">
+              <Card className="group overflow-hidden bg-white border-green-200 hover:border-green-500 transition-all duration-500 shadow-md hover:shadow-lg">
                 <div className="relative h-48 overflow-hidden">
                   <motion.img
                     src={cert.image}
@@ -57,13 +57,13 @@ const QualitySection = () => {
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-green-800 mb-2 group-hover:text-green-600 transition-colors duration-300">
                     {cert.name}
                   </h3>
-                  <p className="text-blue-100/70">{cert.description}</p>
+                  <p className="text-green-700/70">{cert.description}</p>
                 </div>
               </Card>
             </motion.div>
@@ -72,7 +72,7 @@ const QualitySection = () => {
 
         {/* Quality Process Steps */}
         <div className="mt-20 relative">
-          <div className="absolute left-0 right-0 h-0.5 top-1/2 transform -translate-y-1/2 bg-blue-500/20" />
+          <div className="absolute left-0 right-0 h-0.5 top-1/2 transform -translate-y-1/2 bg-green-500/20" />
           <div className="grid md:grid-cols-4 gap-8 relative z-10">
             {[
               "Sample Testing",
@@ -87,10 +87,10 @@ const QualitySection = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 rounded-full bg-blue-500 mx-auto mb-4 flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-green-600 mx-auto mb-4 flex items-center justify-center text-white font-bold">
                   {index + 1}
                 </div>
-                <h4 className="text-lg font-semibold text-white mb-2">
+                <h4 className="text-lg font-semibold text-green-800 mb-2">
                   {step}
                 </h4>
               </motion.div>

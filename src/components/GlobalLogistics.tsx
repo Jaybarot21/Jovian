@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Ship, Plane, Truck, BarChart3, Clock, Shield } from "lucide-react";
 
-const LogisticsSection = () => {
+const GlobalLogistics = () => {
   const features = [
     {
       icon: Ship,
@@ -86,4 +86,4 @@ const LogisticsSection = () => {
   );
 };
 
-export default LogisticsSection;
+export default GlobalLogistics;
