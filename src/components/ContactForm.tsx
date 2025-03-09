@@ -3,7 +3,23 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card } from "./ui/card";
-import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Clock,
+  FileText,
+  Download,
+  CheckCircle2,
+} from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const ContactForm = () => {
   return (
@@ -30,6 +46,9 @@ const ContactForm = () => {
           className="max-w-6xl mx-auto"
         >
           <div className="text-center mb-12">
+            <div className="inline-block px-4 py-1 bg-green-100 rounded-full text-green-800 font-medium text-sm mb-4">
+              Let's Connect
+            </div>
             <h2 className="text-4xl font-bold mb-4 text-green-800">
               Get in Touch
             </h2>
@@ -69,6 +88,46 @@ const ContactForm = () => {
                     </motion.div>
                   ))}
                 </div>
+
+                <div className="mt-8 pt-6 border-t border-green-100">
+                  <h4 className="font-medium text-green-800 mb-4">Resources</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <Button
+                      variant="outline"
+                      className="border-green-200 text-green-700 hover:bg-green-50 justify-start"
+                    >
+                      <FileText className="mr-2 h-4 w-4" />
+                      Company Profile
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="border-green-200 text-green-700 hover:bg-green-50 justify-start"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Product Catalog
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Certifications */}
+              <Card className="p-6 bg-white border-green-200 shadow-md">
+                <h4 className="font-medium text-green-800 mb-4">
+                  Our Certifications
+                </h4>
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    "ISO 22000:2018",
+                    "HACCP Certified",
+                    "Organic Certification",
+                    "GMP Certified",
+                  ].map((cert, index) => (
+                    <div key={index} className="flex items-center">
+                      <CheckCircle2 className="h-4 w-4 text-green-600 mr-1" />
+                      <span className="text-sm text-green-700">{cert}</span>
+                    </div>
+                  ))}
+                </div>
               </Card>
             </div>
 
@@ -78,7 +137,7 @@ const ContactForm = () => {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-green-700">
-                      Your Name
+                      Your Name*
                     </label>
                     <Input
                       placeholder="John Doe"
@@ -87,7 +146,7 @@ const ContactForm = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-green-700">
-                      Your Email
+                      Your Email*
                     </label>
                     <Input
                       type="email"
@@ -97,30 +156,70 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-green-700">
-                    Subject
-                  </label>
-                  <Input
-                    placeholder="How can we help?"
-                    className="bg-white border-green-200 text-green-800 placeholder:text-green-400 focus:border-green-500"
-                  />
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-green-700">
+                      Company
+                    </label>
+                    <Input
+                      placeholder="Your Company"
+                      className="bg-white border-green-200 text-green-800 placeholder:text-green-400 focus:border-green-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-green-700">
+                      Phone
+                    </label>
+                    <Input
+                      type="tel"
+                      placeholder="+1 (555) 000-0000"
+                      className="bg-white border-green-200 text-green-800 placeholder:text-green-400 focus:border-green-500"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-green-700">
-                    Message
+                    Interested In*
+                  </label>
+                  <Select>
+                    <SelectTrigger className="bg-white border-green-200 text-green-800 focus:border-green-500">
+                      <SelectValue placeholder="Select product category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="pulses">Pulses</SelectItem>
+                      <SelectItem value="grains">Grains</SelectItem>
+                      <SelectItem value="spices">Spices</SelectItem>
+                      <SelectItem value="oilseeds">Oil Seeds</SelectItem>
+                      <SelectItem value="cotton">Cotton</SelectItem>
+                      <SelectItem value="other">Other Products</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-green-700">
+                    Message*
                   </label>
                   <Textarea
-                    placeholder="Your message..."
+                    placeholder="Please provide details about your requirements..."
                     className="bg-white border-green-200 text-green-800 placeholder:text-green-400 focus:border-green-500 min-h-[150px]"
                   />
                 </div>
 
+                <div className="text-xs text-green-700/70">
+                  Fields marked with * are required
+                </div>
+
                 <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-6 text-lg rounded-xl">
                   <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  Send Inquiry
                 </Button>
+
+                <p className="text-xs text-center text-green-700/60">
+                  By submitting this form, you agree to our privacy policy and
+                  terms of service.
+                </p>
               </form>
             </Card>
           </div>

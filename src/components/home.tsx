@@ -9,6 +9,7 @@ import PartnersMap from "./PartnersMap";
 import TestimonialCard from "./TestimonialCard";
 import ContactForm from "./ContactForm";
 import Footer from "./Footer";
+import ProductGrid from "./ProductGrid";
 import { motion } from "framer-motion";
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
       <LogisticsSection />
       <AboutUs />
       <ProductShowcase />
+      <ProductGrid />
       <GlobalLogistics />
       <QualitySection />
       <PartnersMap />
@@ -31,6 +33,9 @@ function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
+            <div className="inline-block px-4 py-1 bg-green-100 rounded-full text-green-800 font-medium text-sm mb-4">
+              Client Testimonials
+            </div>
             <h2 className="text-4xl font-bold mb-4 text-green-800">
               What Our Clients Say
             </h2>
@@ -53,6 +58,13 @@ function Home() {
               company="Pacific Trade Co."
               testimonial="Outstanding commitment to quality and timely deliveries. Their spices and grains are among the best we've sourced."
               avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Michael"
+            />
+            <TestimonialCard
+              name="Elena Rodriguez"
+              role="Supply Chain Manager"
+              company="Global Distributors Inc."
+              testimonial="Their logistics expertise and attention to documentation make international trade seamless. A trusted partner for our business."
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Elena"
             />
           </div>
         </div>

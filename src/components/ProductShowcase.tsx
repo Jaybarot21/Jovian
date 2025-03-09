@@ -79,10 +79,10 @@ const ProductShowcase = () => {
       prev + 1 >= products.length - itemsPerPage + 1 ? 0 : prev + 1,
     );
 
-    // Set a shorter timeout to allow for faster transitions
+    // Set an even shorter timeout for smoother 1-second transitions
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 300);
+    }, 200);
   }, [getItemsPerView, isTransitioning]);
 
   const prevSlide = useCallback(() => {
@@ -94,10 +94,10 @@ const ProductShowcase = () => {
       prev - 1 < 0 ? products.length - itemsPerPage : prev - 1,
     );
 
-    // Set a shorter timeout to allow for faster transitions
+    // Set an even shorter timeout for smoother 1-second transitions
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 300);
+    }, 200);
   }, [getItemsPerView, isTransitioning]);
 
   // Handle window resize
@@ -112,7 +112,7 @@ const ProductShowcase = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto slide functionality with improved timing
+  // Auto slide functionality with faster timing (1 second)
   useEffect(() => {
     const startAutoSlide = () => {
       if (slideIntervalRef.current) {
@@ -123,7 +123,7 @@ const ProductShowcase = () => {
         if (!isTransitioning && autoPlay) {
           nextSlide();
         }
-      }, 3000);
+      }, 1000);
     };
 
     startAutoSlide();
@@ -157,7 +157,7 @@ const ProductShowcase = () => {
 
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 300);
+    }, 200);
   };
 
   return (
