@@ -57,7 +57,7 @@ const ContactForm = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
               <Card className="p-8 bg-white border-green-200 hover:border-green-500 shadow-md hover:shadow-lg transition-all duration-300">

@@ -14,7 +14,7 @@ import NavigationBar from "./NavigationBar";
 
 const PaymentTerms = () => {
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-16 sm:pt-20">
       <div className="container mx-auto px-4 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ const PaymentTerms = () => {
                 1. Standard Payment Methods
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
                 {[
                   {
                     icon: CreditCard,

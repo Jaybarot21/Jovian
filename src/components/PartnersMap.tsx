@@ -137,7 +137,7 @@ const PartnersMap = () => {
 
         {/* Key clients section */}
         <div className="mt-20">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}

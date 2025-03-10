@@ -9,7 +9,13 @@ import routes from "tempo-routes";
 
 function App() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-screen">
+          <p className="text-green-700 font-medium">Loading...</p>
+        </div>
+      }
+    >
       <>
         <Routes>
           <Route path="/" element={<Home />} />

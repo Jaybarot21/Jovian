@@ -10,6 +10,7 @@ import TestimonialCard from "./TestimonialCard";
 import ContactForm from "./ContactForm";
 import Footer from "./Footer";
 import ProductGrid from "./ProductGrid";
+import NavigationBar from "./NavigationBar";
 import { motion } from "framer-motion";
 
 function Home() {
@@ -44,7 +45,7 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             <TestimonialCard
               name="Sarah Johnson"
               role="Import Manager"
@@ -72,6 +73,7 @@ function Home() {
 
       <ContactForm />
       <Footer />
+      <NavigationBar />
     </div>
   );
 }

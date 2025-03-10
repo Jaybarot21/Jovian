@@ -20,7 +20,7 @@ const TestimonialCard = ({
   avatarUrl = "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
 }: TestimonialCardProps) => {
   return (
-    <Card className="w-[400px] p-6 bg-white border-green-200 hover:border-green-500 shadow-md hover:shadow-lg transition-all duration-300">
+    <Card className="w-full sm:w-[350px] md:w-[400px] p-4 sm:p-6 bg-white border-green-200 hover:border-green-500 shadow-md hover:shadow-lg transition-all duration-300">
       <div className="flex items-start space-x-4">
         <Avatar className="h-12 w-12 border-2 border-green-500">
           <img src={avatarUrl} alt={name} className="object-cover" />

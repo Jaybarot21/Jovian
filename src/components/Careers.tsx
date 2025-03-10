@@ -113,7 +113,7 @@ const jobOpenings = [
 
 const Careers = () => {
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-16 sm:pt-20">
       <div className="container mx-auto px-4 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ const Careers = () => {
               Why Join Jovian Overseas?
             </h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {[
                 {
                   icon: Globe,

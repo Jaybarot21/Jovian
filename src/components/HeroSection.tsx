@@ -4,7 +4,7 @@ import { ArrowRight, Award, Globe, TrendingUp } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-b from-amber-50 to-white">
+    <div className="relative min-h-screen pt-16 sm:pt-20 overflow-hidden bg-gradient-to-b from-amber-50 to-white">
       {/* Background pattern */}
       <div className="absolute inset-0 z-0 overflow-hidden opacity-20">
         <div className="absolute inset-0 bg-[url('https://iili.io/32okrR1.md.jpg?q=80&w=2000')] bg-cover bg-center opacity-60" />
