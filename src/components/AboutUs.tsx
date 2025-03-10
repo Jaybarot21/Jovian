@@ -61,7 +61,7 @@ const AboutUs = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -91,7 +91,7 @@ const AboutUs = () => {
           transition={{ delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
             {[
               { value: "10+", label: "Years of Excellence" },
               { value: "25+", label: "Countries Served" },

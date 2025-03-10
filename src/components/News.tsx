@@ -90,7 +90,7 @@ const newsArticles = [
 
 const News = () => {
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-16 sm:pt-20">
       <div className="container mx-auto px-4 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ const News = () => {
           {/* News Categories */}
           <div className="mb-12">
             <Tabs defaultValue="all" className="w-full">
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-8 overflow-x-auto pb-2">
                 <TabsList>
                   <TabsTrigger value="all">All News</TabsTrigger>
                   <TabsTrigger value="company">Company News</TabsTrigger>
@@ -168,7 +168,7 @@ const News = () => {
 
               <TabsContent
                 value="all"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 {newsArticles.slice(1).map((article, index) => (
                   <NewsCard key={index} article={article} index={index} />
@@ -177,7 +177,7 @@ const News = () => {
 
               <TabsContent
                 value="company"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 {newsArticles
                   .filter((article) => article.category === "Company News")
@@ -188,7 +188,7 @@ const News = () => {
 
               <TabsContent
                 value="quality"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 {newsArticles
                   .filter(
@@ -201,7 +201,7 @@ const News = () => {
 
               <TabsContent
                 value="sustainability"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 {newsArticles
                   .filter((article) => article.category === "Sustainability")
@@ -212,7 +212,7 @@ const News = () => {
 
               <TabsContent
                 value="financial"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 {newsArticles
                   .filter((article) => article.category === "Financial News")
@@ -223,7 +223,7 @@ const News = () => {
 
               <TabsContent
                 value="awards"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 {newsArticles
                   .filter(
