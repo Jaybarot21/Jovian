@@ -90,6 +90,7 @@ const Navigation = () => {
               { name: "Partners", href: "#partners" },
               { name: "About", href: "#about" },
               { name: "Contact", href: "#contact" },
+              { name: "Forms", href: "/forms" },
             ].map((item) => (
               <div key={item.name} className="relative group">
                 <motion.a
