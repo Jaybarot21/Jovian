@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { useRoutes, Routes, Route } from "react-router-dom";
+import { useRoutes, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/home";
 import TermsConditions from "./components/TermsConditions";
 import PaymentTerms from "./components/PaymentTerms";
@@ -26,6 +26,7 @@ function App() {
       }
     >
       <>
+        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/terms" element={<TermsConditions />} />
@@ -44,8 +45,10 @@ function App() {
             <Route path="social" element={<SocialLinks />} />
             <Route path="emails" element={<EmailTemplates />} />
           </Route>
+
+          {/* Add a catch-all route */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
       </>
     </Suspense>
   );
