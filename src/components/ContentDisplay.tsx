@@ -55,7 +55,7 @@ const ContentDisplay = ({ pageType }: ContentDisplayProps) => {
 
   return (
     <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md">
-      <div className="prose prose-headings:text-green-800 prose-a:text-green-600 max-w-none">
+      <div className="prose max-w-none">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
