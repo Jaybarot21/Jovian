@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { ArrowRight, Building, CheckCircle2, Users } from "lucide-react";
+import { useTranslation } from "../lib/translations";
 
 const partners = [
   { name: "USA", x: "20%", y: "30%", region: "North America", flag: "🇺🇸" },
@@ -40,6 +41,7 @@ const clients = [
 ];
 
 const PartnersMap = () => {
+  const { t } = useTranslation();
   return (
     <section id="partners" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -50,13 +52,13 @@ const PartnersMap = () => {
           className="text-center mb-12"
         >
           <div className="inline-block px-4 py-1 bg-green-100 rounded-full text-green-800 font-medium text-sm mb-4">
-            International Network
+            {t("globalReach")}
           </div>
           <h2 className="text-4xl font-bold mb-4 text-green-800">
-            Our Global Presence
+            {t("globalExcellence")}
           </h2>
           <p className="text-lg text-green-700/80 max-w-3xl mx-auto">
-            Connecting agricultural excellence with markets worldwide
+            {t("globalLogisticsSubtitle")}
           </p>
         </motion.div>
 

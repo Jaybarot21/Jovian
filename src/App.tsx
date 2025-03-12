@@ -6,6 +6,9 @@ import PaymentTerms from "./components/PaymentTerms";
 import Careers from "./components/Careers";
 import News from "./components/News";
 import FormsPage from "./components/FormsPage";
+import ProductCatalog from "./components/ProductCatalog";
+import AboutUsPage from "./components/AboutUsPage";
+import AdminPanel from "./components/admin/AdminPanel";
 import routes from "tempo-routes";
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/news" element={<News />} />
           <Route path="/forms" element={<FormsPage />} />
+          <Route path="/products" element={<ProductCatalog />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
         {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
       </>

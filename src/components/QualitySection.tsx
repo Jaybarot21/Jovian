@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
+import { useTranslation } from "../lib/translations";
 
 const QualitySection = () => {
+  const { t } = useTranslation();
+
   const certifications = [
     {
       name: "ISO 22000:2018",
@@ -33,10 +36,10 @@ const QualitySection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-800">
-            Quality Assurance
+            {t("qualityAssurance")}
           </h2>
           <p className="text-lg md:text-xl text-green-700/80 max-w-3xl mx-auto">
-            Meeting international standards with rigorous quality control
+            {t("qualityAssuranceSubtitle")}
           </p>
         </motion.div>
 
@@ -75,10 +78,10 @@ const QualitySection = () => {
           <div className="absolute left-0 right-0 h-0.5 top-1/2 transform -translate-y-1/2 bg-green-500/20" />
           <div className="grid md:grid-cols-4 gap-8 relative z-10">
             {[
-              "Sample Testing",
-              "Quality Inspection",
-              "Certification",
-              "Export Ready",
+              t("sampleTesting"),
+              t("qualityInspection"),
+              t("certification"),
+              t("exportReady"),
             ].map((step, index) => (
               <motion.div
                 key={step}

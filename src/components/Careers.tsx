@@ -15,6 +15,10 @@ import {
 } from "lucide-react";
 import Footer from "./Footer";
 import NavigationBar from "./NavigationBar";
+import CareerForm from "./CareerForm";
+import { useState } from "react";
+import { useTranslation } from "../lib/translations";
+import JobCard from "./JobCard";
 
 const jobOpenings = [
   {
@@ -112,6 +116,21 @@ const jobOpenings = [
 ];
 
 const Careers = () => {
+  const { t } = useTranslation();
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
+
+  const handleApply = (job) => {
+    setSelectedJob(job);
+    setShowApplicationForm(true);
+    // Scroll to application form
+    setTimeout(() => {
+      document
+        .getElementById("application-form")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-white pt-16 sm:pt-20">
       <div className="container mx-auto px-4 py-12">
@@ -217,7 +236,12 @@ const Careers = () => {
 
               <TabsContent value="all" className="space-y-6">
                 {jobOpenings.map((job, index) => (
-                  <JobCard key={index} job={job} index={index} />
+                  <JobCard
+                    key={index}
+                    job={job}
+                    index={index}
+                    onApply={() => handleApply(job)}
+                  />
                 ))}
               </TabsContent>
 
@@ -225,7 +249,12 @@ const Careers = () => {
                 {jobOpenings
                   .filter((job) => job.department === "Sales")
                   .map((job, index) => (
-                    <JobCard key={index} job={job} index={index} />
+                    <JobCard
+                      key={index}
+                      job={job}
+                      index={index}
+                      onApply={() => handleApply(job)}
+                    />
                   ))}
               </TabsContent>
 
@@ -233,7 +262,12 @@ const Careers = () => {
                 {jobOpenings
                   .filter((job) => job.department === "Quality Control")
                   .map((job, index) => (
-                    <JobCard key={index} job={job} index={index} />
+                    <JobCard
+                      key={index}
+                      job={job}
+                      index={index}
+                      onApply={() => handleApply(job)}
+                    />
                   ))}
               </TabsContent>
 
@@ -241,7 +275,12 @@ const Careers = () => {
                 {jobOpenings
                   .filter((job) => job.department === "Supply Chain")
                   .map((job, index) => (
-                    <JobCard key={index} job={job} index={index} />
+                    <JobCard
+                      key={index}
+                      job={job}
+                      index={index}
+                      onApply={() => handleApply(job)}
+                    />
                   ))}
               </TabsContent>
 
@@ -249,53 +288,68 @@ const Careers = () => {
                 {jobOpenings
                   .filter((job) => job.department === "Procurement")
                   .map((job, index) => (
-                    <JobCard key={index} job={job} index={index} />
+                    <JobCard
+                      key={index}
+                      job={job}
+                      index={index}
+                      onApply={() => handleApply(job)}
+                    />
                   ))}
               </TabsContent>
             </Tabs>
           </div>
 
-          {/* Application Process */}
+          {/* Application Form */}
+          {showApplicationForm && (
+            <div id="application-form" className="mb-16 scroll-mt-24">
+              <h2 className="text-2xl font-bold text-green-800 mb-8 text-center">
+                Apply for {selectedJob?.title}
+              </h2>
+              <CareerForm jobTitle={selectedJob?.title} />
+            </div>
+          )}
+
+          {/* Our Hiring Process */}
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-green-800 mb-8 text-center">
-              Our Application Process
+              Our Hiring Process
             </h2>
 
-            <div className="relative max-w-3xl mx-auto">
+            <div className="relative max-w-4xl mx-auto">
               <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-green-200 transform -translate-x-1/2"></div>
 
               {[
                 {
-                  title: "Application Submission",
+                  title: "Application Review",
                   description:
-                    "Submit your resume and cover letter through our online portal or via email to careers@jovianoverseas.com",
+                    "Our HR team carefully reviews all applications to identify candidates whose skills and experience match our requirements.",
                 },
                 {
-                  title: "Initial Screening",
+                  title: "Initial Interview",
                   description:
-                    "Our HR team reviews applications and conducts initial phone interviews with qualified candidates",
+                    "Selected candidates are invited for an initial interview to discuss their background, experience, and fit for the role.",
                 },
                 {
                   title: "Technical Assessment",
                   description:
-                    "Depending on the role, candidates may complete a skills assessment or technical interview",
+                    "Depending on the role, candidates may be asked to complete a technical assessment or case study to demonstrate their expertise.",
                 },
                 {
-                  title: "Panel Interview",
+                  title: "Final Interview",
                   description:
-                    "Meet with the hiring manager and team members for an in-depth discussion about your experience and the role",
+                    "Successful candidates meet with senior team members and potential colleagues to ensure mutual fit and alignment with our values.",
                 },
                 {
-                  title: "Final Decision",
+                  title: "Offer & Onboarding",
                   description:
-                    "Selected candidates receive an offer letter with detailed information about compensation and benefits",
+                    "We extend offers to the best candidates and provide comprehensive onboarding to set them up for success.",
                 },
               ].map((step, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.2 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
                   className={`relative mb-12 ${index % 2 === 0 ? "pr-8 md:pr-0 md:mr-auto md:ml-0 md:text-right md:pl-8" : "pl-8 md:pl-0 md:ml-auto md:mr-0 md:text-left md:pr-8"} md:w-[calc(50%-20px)]`}
                 >
                   <div
@@ -315,17 +369,29 @@ const Careers = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-12 bg-green-50 p-8 rounded-xl border border-green-200">
+          <div className="text-center bg-green-50 p-8 rounded-xl border border-green-200">
             <h2 className="text-2xl font-bold text-green-800 mb-4">
               Don't See a Perfect Match?
             </h2>
             <p className="text-green-700/80 mb-6 max-w-2xl mx-auto">
               We're always looking for talented individuals to join our team.
-              Send your resume to us and we'll keep it on file for future
+              Send us your resume and we'll keep it on file for future
               opportunities.
             </p>
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-6 text-lg rounded-lg">
-              Submit Your Resume
+            <Button
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-6 text-lg rounded-lg"
+              onClick={() => {
+                setSelectedJob({ title: "General Application" });
+                setShowApplicationForm(true);
+                setTimeout(() => {
+                  document.getElementById("application-form")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }, 100);
+              }}
+            >
+              Submit General Application
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </motion.div>
@@ -333,75 +399,6 @@ const Careers = () => {
       <Footer />
       <NavigationBar />
     </div>
-  );
-};
-
-const JobCard = ({ job, index }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-    >
-      <Card className="overflow-hidden border-green-200 hover:border-green-500 transition-all duration-300 shadow-sm hover:shadow-md">
-        <div className="p-6 md:p-8">
-          <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-green-800">{job.title}</h3>
-              <div className="flex flex-wrap items-center gap-3 mt-2">
-                <Badge
-                  variant="outline"
-                  className="bg-green-50 text-green-700 border-green-200"
-                >
-                  {job.department}
-                </Badge>
-                <div className="flex items-center text-green-700/80 text-sm">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  {job.location}
-                </div>
-                <div className="flex items-center text-green-700/80 text-sm">
-                  <Briefcase className="h-4 w-4 mr-1" />
-                  {job.type}
-                </div>
-                <div className="flex items-center text-green-700/80 text-sm">
-                  <Clock className="h-4 w-4 mr-1" />
-                  {job.experience}
-                </div>
-              </div>
-            </div>
-            <Button className="bg-green-600 hover:bg-green-700 text-white">
-              Apply Now
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-
-          <p className="text-green-700/80 mb-6">{job.description}</p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold text-green-800 mb-2">
-                Responsibilities:
-              </h4>
-              <ul className="list-disc pl-5 space-y-1 text-green-700/80">
-                {job.responsibilities.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-green-800 mb-2">
-                Requirements:
-              </h4>
-              <ul className="list-disc pl-5 space-y-1 text-green-700/80">
-                {job.requirements.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Card>
-    </motion.div>
   );
 };
 

@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import { Home, FileText, CreditCard, Briefcase, Newspaper } from "lucide-react";
+import {
+  Home,
+  FileText,
+  CreditCard,
+  Briefcase,
+  Newspaper,
+  ShoppingBag,
+  Info,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 
 const NavigationBar = () => {
@@ -34,6 +42,8 @@ const NavigationBar = () => {
 
   const navItems = [
     { path: "/", icon: Home, label: "Home" },
+    { path: "/products", icon: ShoppingBag, label: "Products" },
+    { path: "/about", icon: Info, label: "About Us" },
     { path: "/terms", icon: FileText, label: "Terms" },
     { path: "/payment-terms", icon: CreditCard, label: "Payment" },
     { path: "/careers", icon: Briefcase, label: "Careers" },
@@ -47,7 +57,7 @@ const NavigationBar = () => {
       transition={{ duration: 0.3 }}
       className="fixed bottom-6 left-0 right-0 z-50 w-fit mx-auto"
     >
-      <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-lg px-3 sm:px-6 py-3 flex items-center justify-center space-x-2 sm:space-x-4 border border-green-200 mx-auto">
+      <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-lg px-3 sm:px-6 py-3 flex items-center justify-center space-x-2 sm:space-x-4 border border-green-200 mx-auto overflow-x-auto max-w-[95vw]">
         {navItems.map((item) => (
           <Link to={item.path} key={item.path}>
             <Button

@@ -42,6 +42,66 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_info: {
+        Row: {
+          address: string
+          business_hours: string
+          email: string
+          id: number
+          phone: string
+          updated_at: string | null
+        }
+        Insert: {
+          address: string
+          business_hours: string
+          email: string
+          id?: number
+          phone: string
+          updated_at?: string | null
+        }
+        Update: {
+          address?: string
+          business_hours?: string
+          email?: string
+          id?: number
+          phone?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      contacts: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string
+          id: number
+          interest: string
+          message: string
+          name: string
+          phone: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email: string
+          id?: number
+          interest: string
+          message: string
+          name: string
+          phone?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string
+          id?: number
+          interest?: string
+          message?: string
+          name?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
       content_pages: {
         Row: {
           content: string
@@ -62,6 +122,47 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      dropdown_items: {
+        Row: {
+          created_at: string | null
+          display_order: number
+          href: string
+          id: number
+          is_active: boolean | null
+          name: string
+          navigation_item_id: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          display_order: number
+          href: string
+          id?: number
+          is_active?: boolean | null
+          name: string
+          navigation_item_id?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number
+          href?: string
+          id?: number
+          is_active?: boolean | null
+          name?: string
+          navigation_item_id?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dropdown_items_navigation_item_id_fkey"
+            columns: ["navigation_item_id"]
+            isOneToOne: false
+            referencedRelation: "navigation_items"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       email_templates: {
         Row: {
@@ -87,6 +188,54 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          cover_letter: string
+          created_at: string | null
+          education: string
+          email: string
+          experience: string
+          first_name: string
+          id: number
+          last_name: string
+          phone: string
+          position: string
+          resume_url: string | null
+          willing_to_relocate: boolean | null
+          work_permit: boolean | null
+        }
+        Insert: {
+          cover_letter: string
+          created_at?: string | null
+          education: string
+          email: string
+          experience: string
+          first_name: string
+          id?: number
+          last_name: string
+          phone: string
+          position: string
+          resume_url?: string | null
+          willing_to_relocate?: boolean | null
+          work_permit?: boolean | null
+        }
+        Update: {
+          cover_letter?: string
+          created_at?: string | null
+          education?: string
+          email?: string
+          experience?: string
+          first_name?: string
+          id?: number
+          last_name?: string
+          phone?: string
+          position?: string
+          resume_url?: string | null
+          willing_to_relocate?: boolean | null
+          work_permit?: boolean | null
+        }
+        Relationships: []
+      }
       media_library: {
         Row: {
           created_at: string | null
@@ -105,6 +254,42 @@ export type Database = {
           id?: number
           name?: string
           url?: string
+        }
+        Relationships: []
+      }
+      navigation_items: {
+        Row: {
+          created_at: string | null
+          display_order: number
+          has_dropdown: boolean | null
+          href: string
+          id: number
+          is_active: boolean | null
+          location: string
+          name: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          display_order: number
+          has_dropdown?: boolean | null
+          href: string
+          id?: number
+          is_active?: boolean | null
+          location: string
+          name: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number
+          has_dropdown?: boolean | null
+          href?: string
+          id?: number
+          is_active?: boolean | null
+          location?: string
+          name?: string
+          updated_at?: string | null
         }
         Relationships: []
       }

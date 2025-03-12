@@ -7,8 +7,16 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import { useContactInfo } from "../hooks/useContactInfo";
+import { useTranslation } from "../lib/translations";
+import { useNavigation } from "../hooks/useNavigation";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const { contactInfo } = useContactInfo();
+  const { t } = useTranslation();
+  const { navigationItems, loading } = useNavigation("footer");
+
   return (
     <footer className="bg-green-900 text-green-100">
       <div className="container mx-auto px-4 py-16">
@@ -46,26 +54,26 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-3">
-              {[
-                { name: "About Us", href: "#about" },
-                { name: "Products", href: "#products" },
-                { name: "Services", href: "#services" },
-                { name: "Contact", href: "#contact" },
-                { name: "Forms", href: "/forms" },
-                { name: "Terms & Conditions", href: "/terms" },
-                { name: "Payment Terms", href: "/payment-terms" },
-                { name: "Careers", href: "/careers" },
-                { name: "News", href: "/news" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="hover:text-green-300 transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
+              {!loading &&
+                navigationItems.map((item) => (
+                  <li key={item.id}>
+                    {item.href.startsWith("/") ? (
+                      <Link
+                        to={item.href}
+                        className="hover:text-green-300 transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className="hover:text-green-300 transition-colors"
+                      >
+                        {item.name}
+                      </a>
+                    )}
+                  </li>
+                ))}
             </ul>
           </div>
 
@@ -96,15 +104,19 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-green-300" />
-                <span>123 Business Avenue, Mumbai, India</span>
+                <span>
+                  {contactInfo?.address || "123 Business Avenue, Mumbai, India"}
+                </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-green-300" />
-                <span>+91 123 456 7890</span>
+                <span>{contactInfo?.phone || "+91 123 456 7890"}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-green-300" />
-                <span>contact@jovianoverseas.com</span>
+                <span>
+                  {contactInfo?.email || "contact@jovianoverseas.com"}
+                </span>
               </li>
             </ul>
           </div>

@@ -3,6 +3,7 @@ import { Card } from "./ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Button } from "./ui/button";
+import { useTranslation } from "../lib/translations";
 
 const products = [
   {
@@ -50,6 +51,7 @@ const products = [
 ];
 
 const ProductShowcase = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [windowWidth, setWindowWidth] = useState(
@@ -170,10 +172,10 @@ const ProductShowcase = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-800">
-            Our Premium Products
+            {t("ourPremiumProducts")}
           </h2>
           <p className="text-lg md:text-xl text-green-700/80 max-w-3xl mx-auto">
-            Discover our curated selection of premium agricultural exports
+            {t("discoverSelection")}
           </p>
         </motion.div>
 

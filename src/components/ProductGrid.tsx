@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { ArrowRight, Download, FileText } from "lucide-react";
+import { useTranslation } from "../lib/translations";
 
 const categories = [
   {
@@ -57,6 +58,7 @@ const categories = [
 ];
 
 const ProductGrid = () => {
+  const { t } = useTranslation();
   return (
     <section id="product-categories" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -67,13 +69,13 @@ const ProductGrid = () => {
           className="text-center mb-16"
         >
           <div className="inline-block px-4 py-1 bg-green-100 rounded-full text-green-800 font-medium text-sm mb-4">
-            Extensive Product Range
+            {t("extensiveRange")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-800">
-            Product Categories
+            {t("productCategories")}
           </h2>
           <p className="text-lg md:text-xl text-green-700/80 max-w-3xl mx-auto">
-            Explore our comprehensive range of premium agricultural exports
+            {t("extensiveRange")}
           </p>
         </motion.div>
 
@@ -119,7 +121,7 @@ const ProductGrid = () => {
                       variant="link"
                       className="p-0 text-green-600 hover:text-green-700 font-medium flex items-center"
                     >
-                      View Details
+                      {t("learnMore")}
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Button>
                     <Button
@@ -140,7 +142,7 @@ const ProductGrid = () => {
         <div className="mt-16 text-center">
           <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-6 text-lg rounded-lg group">
             <Download className="mr-2 h-5 w-5" />
-            Download Complete Product Catalog
+            {t("exploreProducts")}
           </Button>
           <p className="mt-4 text-sm text-green-700/60">
             Detailed specifications, grades, and packaging options available
