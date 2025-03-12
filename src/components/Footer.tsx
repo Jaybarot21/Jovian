@@ -1,5 +1,12 @@
-import { Mail, Phone, MapPin } from "lucide-react";
-import SocialLinks from "./SocialLinks";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -15,7 +22,22 @@ const Footer = () => {
               Premium agricultural exports connecting Indian farmers to global
               markets.
             </p>
-            <SocialLinks />
+            <div className="flex space-x-4">
+              {[
+                { icon: Facebook, href: "#" },
+                { icon: Twitter, href: "#" },
+                { icon: Instagram, href: "#" },
+                { icon: Linkedin, href: "#" },
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center hover:bg-green-700 transition-colors"
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -89,15 +111,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-green-800 mt-12 pt-8 text-center text-green-300">
-          <p className="mb-2">© 2024 Jovian Overseas. All rights reserved.</p>
-          <p className="text-sm">
-            <a
-              href="/admin"
-              className="text-green-300 hover:text-white hover:underline transition-colors"
-            >
-              Admin Login
-            </a>
-          </p>
+          <p>© 2024 Jovian Overseas. All rights reserved.</p>
         </div>
       </div>
     </footer>
