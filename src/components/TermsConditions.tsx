@@ -247,7 +247,7 @@ const TermsConditions = () => {
               contact our legal department at:
             </p>
             <p className="font-medium text-green-800 mt-2">
-              legal@jovianoverseas.com
+              info@jovianoverseas.com
             </p>
           </div>
         </motion.div>
